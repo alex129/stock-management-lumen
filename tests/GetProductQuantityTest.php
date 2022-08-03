@@ -8,9 +8,22 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class GetProductQuantityTest extends TestCase
 {
+    use DatabaseMigrations;
+
+
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        // seed the database
+        $this->artisan('db:seed --class=ProductSeeder');
+        // alternatively you can call
+        // $this->seed();
+    }
+
     public function test_get_product()
     {
-        $response = $this->get('/api/products/1')->seeJsonStructure([
+        $this->get('/api/products/1')->seeJsonStructure([
             'id',
             'name',
             'quantity'

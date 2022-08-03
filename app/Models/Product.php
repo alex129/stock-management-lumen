@@ -10,8 +10,8 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $attributes = ['quantity' => 0];
     protected $appends = ['quantity'];
+    protected $fillable = ['name'];
 
     public function movements()
     {
@@ -21,5 +21,10 @@ class Product extends Model
     public function getQuantityAttribute() :Int
     {
         return $this->movements()->sum('quantity');
+    }
+
+    public function setQuantityAttribute($value)
+    {
+        $this->attributes['quantity'] = $value;
     }
 }
