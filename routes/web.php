@@ -23,5 +23,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {
         $router->get('/{id}', 'Product\GetProductController');
         $router->get('/', 'Product\ListProductsController');
     });
+
+    $router->group(['prefix' => 'movements'], function () use ($router) {
+        $router->post('/', 'Movement\StoreMovementController');
+    });
 });
 

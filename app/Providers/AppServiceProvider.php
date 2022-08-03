@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Contracts\MovementsRepositoryContract;
 use App\Contracts\ProductsRepositoryContract;
+use App\Repositories\Eloquent\MovementsRepository;
 use App\Repositories\Eloquent\ProductsRepository;
 use Closure;
 use Illuminate\Support\ServiceProvider;
@@ -18,7 +20,9 @@ class AppServiceProvider extends ServiceProvider
     {        
         //BIND INTERFACE IMPLEMENTATIONS
 
-        //ABILITIES
+        //PRODUCTS
         $this->app->bind(ProductsRepositoryContract::class, ProductsRepository::class);
+        //MOVEMENTS
+        $this->app->bind(MovementsRepositoryContract::class, MovementsRepository::class);
     }
 }
