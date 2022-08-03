@@ -19,6 +19,7 @@ class GetProductQuantityTest extends TestCase
 
     public function test_get_product_movements_stock_quantity()
     {
+        Product::find(1)->movements()->delete();
         Product::find(1)->movements()->createMany([
             ['quantity' => 10],
             ['quantity' => -5],
