@@ -7,18 +7,53 @@
 
 Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
 
-## Official Documentation
+## API DOCS
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+### Products
 
-## Contributing
+#### Get product
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+(GET) baseurl/api/products/{id}
 
-## Security Vulnerabilities
+Example response:
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+{
+ id: 1,
+ name: "Product 1",
+ quantity: 0
+}
 
-## License
+#### List products
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+(GET) baseurl/api/products
+
+Example response:
+[
+{
+ id: 1,
+ name: "Product 1",
+ quantity: 0
+},
+{
+ id: 2,
+ name: "Product 2",
+ quantity: 2
+}
+]
+
+
+### Movements
+#### Store movement
+
+(POST) baseurl/api/movements
+
+Required parameters: 
+* product_id
+* quantity
+
+Example:
+
+await axios.post("baseurl/api/movements", [product_id: 1, quantity: -1])
+
+await axios.post("baseurl/api/movements", [product_id: 1, quantity: 1])
+
