@@ -2,6 +2,7 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -18,8 +19,9 @@ $router->get('/', function () use ($router) {
 });
 
 $router->group(['prefix' => 'api'], function () use ($router) {
-    $router->get('users', function () {
-        // Matches The "/admin/users" URL
+    $router->group(['prefix' => 'products'], function () use ($router) {
+        $router->get('/{id}', 'Product\GetProductController');
+        $router->get('/', 'Product\ListProductsController');
     });
 });
 
