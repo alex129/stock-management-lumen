@@ -62,3 +62,10 @@ await axios.post("baseurl/api/movements", [product_id: 1, quantity: -1])
 
 await axios.post("baseurl/api/movements", [product_id: 1, quantity: 1])
 
+
+## Testing
+
+run 
+
+phpunit
+
